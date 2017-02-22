@@ -3,6 +3,46 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<title>Inbox</title>
+<script src="mail-generator.js"></script>
+<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+<script>
+window.onload = function(){
+
+	for (var i = 0; i < window.geemails.length; i++) {
+		var email = window.geemails[i];
+		showGeemail(email);
+	}
+
+	var addGeemail = setInterval(newGeemail,3000);
+
+
+	function newGeemail (){
+    		var email = getNewemail();	
+    		showGeemail(email);
+    		window.geemails.unshift(email);      
+    	}
+
+
+   	function showGeemail (email) {
+    			var date = email.date;
+    			var sender = email.sender;
+    			var subject = email.subject;
+    			var body = email.body;
+                
+                $('#navigation li span').html(window.geemails.length);
+    			
+    			$('.emailHolder').append(
+    				'<h1 class="sender">' + 'Name:' + sender + '</h1>' + 
+    				'<h2 class="subject">'  + subject +  '</h2>' + 
+    				'<h3 class="body">'  + body +  '</h3>' + 
+    				'<h4 class="date">'  + date +  '</h4>' + 
+    				'<br>'
+    				)
+    				      
+    	}  
+
+}
+</script>
 </head>
 <body>
 <header>
@@ -12,7 +52,7 @@
 </header>
 <nav>
 	<ul id="navigation">
-		<li class="sidebar"><a href="#">Inbox</a></li>
+		<li class="sidebar"><a href="#">Inbox</a>(<span></span>)</li>
 		<li class="sidebar"><a href="#">Favorites</a></li>
 		<li class="sidebar"><a href="#">Urgent</a></li>
 		<li class="sidebar"><a href="#">Sent Mail</a></li>
@@ -23,14 +63,12 @@
 		<li class="sidebar"><a href="#">Trash</a></li>
 	</ul>
 </nav>
-<section class="messageHolder">
-	<div class="sender"><h4>Name</h4></div>
-	<div class="subject"><h4>Subject</h4></div>
-	<div class="body"><h4>Message</h4></div>
-	<div class="date"><h4>Date</h4></div>
+<section class="emailHolder">
+	<div class="sender"></div>
+	<div class="subject"></div>
+	<div class="body"></div>
+	<div class="date"></div>
 </section>
-<script src="mail-generator.js"></script>
-<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="script.js"></script>
+
 </body>
 </html>
