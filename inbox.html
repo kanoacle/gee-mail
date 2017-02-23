@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Capriola' rel='stylesheet' type='text/css'>
 	<title>Inbox</title>
-<script src="mail-generator.js"></script>
-<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+<script src="js/mail-generator.js"></script>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script>
 window.onload = function(){
 
@@ -27,22 +28,22 @@ window.onload = function(){
     			var date = email.date;
     			var sender = email.sender;
     			var subject = email.subject;
-    			var body = email.body;
+    			var emailBody = email.body;
                 
                 $('#navigation li span').html(window.geemails.length);
     			
-    			$('.emailHolder').find('#currentEmail').append(
+    			$('.emailHolder').append(
     				'<h1 class="sender">' + sender + '</h1>' + 
     				'<h2 class="subject">'  + subject +  '</h2>' + 
-    				'<h3 class="button">' + 'See Message' + '</h3>' + 
-    				'<h4 class="body">'  + body +  '</h4>' + 
+    				'<h3 class="button">' + 'See Message' + '</h3>' +  
     				'<h5 class="date">'  + date +  '</h5>' + 
+    				'<h4 class="emailBody">'  + emailBody +  '</h4>' +
     				'<br>'
     				)
     				      
     	}
-    $('div .button').on('click', function(){
-    	$(this).closest('#currentEmail').find('.body').toggle();
+    $('.button').on('click', function(){
+    	$(this).closest('.emailHolder').find('.emailBody').toggle();
     })
 
 }
@@ -51,30 +52,30 @@ window.onload = function(){
 <body>
 <header>
 <h1>
-	<a class="header" href="inbox.html">GEEMail</a>
+	<a class="header" href="inbox.html" style="color:#db4733">G<span style="color:#ffba03">e<span style="color:#009955">e<span style="color:#186dee
+	">M<span style="color:#009955">a<span style="color:#ffba03">i<span style="color:#db4733">l</a>
 </h1>
+<p class="cool">The World's Coolest E-mail Website</p>
 </header>
 <nav>
 	<ul id="navigation">
-		<li class="sidebar"><a href="#">Inbox</a>(<span></span>)</li>
-		<li class="sidebar"><a href="#">Favorites</a></li>
-		<li class="sidebar"><a href="#">Urgent</a></li>
-		<li class="sidebar"><a href="#">Sent Mail</a></li>
-		<li class="sidebar"><a href="#">Drafts</a></li>
-		<li class="sidebar"><a href="#">Notes</a></li>
-		<li class="sidebar"><a href="#">All Mail</a></li>
-		<li class="sidebar"><a href="#">Junk Mail</a></li>
-		<li class="sidebar"><a href="#">Trash</a></li>
+		<li class="sidebar"><a href="#">Inbox</a>(<span></span>)</li><br>
+		<li class="sidebar"><a href="#">Favorites</a></li><br>
+		<li class="sidebar"><a href="#">Urgent</a></li><br>
+		<li class="sidebar"><a href="#">Sent Mail</a></li><br>
+		<li class="sidebar"><a href="#">Drafts</a></li><br>
+		<li class="sidebar"><a href="#">Notes</a></li><br>
+		<li class="sidebar"><a href="#">All Mail</a></li><br>
+		<li class="sidebar"><a href="#">Junk Mail</a></li><br>
+		<li class="sidebar"><a href="#">Trash</a></li><br>
 	</ul>
 </nav>
 <div class="emailHolder">
-	<section id="currentEmail">
 		<div class="sender"></div>
 		<div class="subject"></div>
-		<div class="button"></div>
-		<div class="body"></div>
+		<div id="button"></div>
 		<div class="date"></div>
-	</section>
+		<div class="emailBody"></div>
 </div>
 
 </body>
