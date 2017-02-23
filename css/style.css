@@ -58,6 +58,7 @@ a {
 	text-decoration: none;
 }
 
+
 li.sidebar {
 	padding: 3px;
 	border: 3px solid white;
@@ -67,8 +68,13 @@ li.sidebar {
 	background-color: rgba(0,0,0,1);
 	font-family:'Capriola', Helveti sans-serif;
 	text-decoration: none;
-	width:100%;
+	width:110px;
 	cursor: pointer;
+	transition: all .2s ease-in-out;
+}
+
+li.sidebar:hover {
+	transform: scale(1.1);
 }
 
 a.header {
@@ -95,7 +101,7 @@ a.header:hover {
 	padding:0px;
 	margin:0 auto;
 	border-width:0px 1px 1px 3px;
-	background-color: rgba(0,0,0,0.1);
+	background-color: white;
 }
 
 h1.sender {
@@ -144,6 +150,10 @@ h2.subject {
 	font-family: 'Capriola', Helvetica, sans-serif;
 	cursor: pointer;
 	text-align: center;
+	transition: all .2s ease-in-out;
+}
+.button:hover {
+	transform: scale(1.1);
 }
 
 
