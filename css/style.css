@@ -25,8 +25,8 @@ p {
 
 nav {
 	float:left;
-	position: fixed;
 	padding-left: 25px;
+	width:120px;
 }
 
 nav ul {
@@ -87,7 +87,8 @@ a.header:hover {
 }
 
 .emailHolder {
-	width: 965px;
+	width: 75%;
+	float:left;
 	border:solid black;
 	margin-left: 150px;
 	text-align: left;
@@ -107,6 +108,28 @@ h2.subject {
 	font-size:15px;
 	display: inline-block;
 	margin-left: 25px;
+}
+
+@media screen and (max-width:830px) {
+	h1.sender, h2.subject {
+		display:block;
+	}
+
+	nav, .emailHolder {
+		float:none;
+	}
+
+	nav {
+		text-align:center;
+	}
+
+	.emailHolder {
+		margin-left:0;
+		padding-top:25px;
+		padding-right:25px;
+	}
+
+
 }
 
 .button {
