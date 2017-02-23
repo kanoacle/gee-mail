@@ -114,12 +114,13 @@ h2.subject {
 	border-radius: 5px;
 	background-color: rgba(250,250,250,1);
 	color: black;
-	width:100px;
+	width:150px;
 	margin-left: 25px;
 	display: inline-block;
 	padding:1px 3px;
 	font-family: 'Capriola', Helvetica, sans-serif;
 	cursor: pointer;
+	text-align: center;
 }
 
 
