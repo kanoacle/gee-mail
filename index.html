@@ -1,18 +1,95 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<script src="js/mail-generator.js"></script>
-		<link href="css/style.css" rel="stylesheet" media="screen">
-    <script>
-      window.onload = function(){
-        // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
-        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-        
-      };
-    </script>
-	</head>
-	<body>
-		<div class="container" id="main">
-			Build Me!
-		</div>
-	</body>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Capriola' rel='stylesheet' type='text/css'>
+	<title>Inbox</title>
+<script src="js/mail-generator.js"></script>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script>
+window.onload = function(){
+
+
+	for (var i = 0; i < window.geemails.length; i++) {
+		var email = window.geemails[i];
+		showGeemail(email);
+	}
+
+	// sets timing to add new geemail in
+
+	var addGeemail = setInterval(newGeemail,3000);
+
+	// adds new geemail to the page
+
+	function newGeemail (){
+    		var email = getNewMessage();	
+    		showGeemail(email);
+    		window.geemails.unshift(email);      
+    	}
+
+    // format geemail info to add
+
+   	function showGeemail (email) {
+    			var date = email.date;
+    			var sender = email.sender;
+    			var subject = email.subject;
+    			var emailContent = email.body;
+                
+                $('#navigation li span').html(window.geemails.length);
+    			
+    			$('.emailHolder').append(
+    				'<h1 class="sender">' + sender + '</h1>' + 
+    				'<h2 class="subject">'  + subject +  '</h2>' + 
+    				'<h5 class="date">'  + date +  '</h5>' + 
+    				'<h3 class="button">' + 'See Message' + '</h3>' +  
+    				'<h4 class="emailBody hide">'  + emailContent +  '</h4>' +
+    				'<br>'
+    				)
+    				      
+    	}
+    //  show hide button 
+    
+    $(document).on('click', '.button' , function(){
+    	$(this).next('.emailBody').toggleClass('hide');
+    	if ($(this).text() === 'See Message') {
+         $(this).text('Hide Message');
+    }
+    else {
+        $(this).text('See Message');
+    }
+    })
+
+}
+</script>
+</head>
+<body>
+<header>
+<h1>
+	<a class="header" href="inbox.html" style="color:#db4733">G<span style="color:#ffba03">e<span style="color:#009955">e<span style="color:#186dee
+	">M<span style="color:#009955">a<span style="color:#ffba03">i<span style="color:#db4733">l</a>
+</h1>
+<p class="cool">The World's Coolest E-mail Website</p>
+</header>
+<nav>
+	<ul id="navigation">
+		<li class="sidebar"><a href="#">Inbox</a>(<span></span>)</li><br>
+		<li class="sidebar"><a href="#">Favorites</a></li><br>
+		<li class="sidebar"><a href="#">Urgent</a></li><br>
+		<li class="sidebar"><a href="#">Sent Mail</a></li><br>
+		<li class="sidebar"><a href="#">Drafts</a></li><br>
+		<li class="sidebar"><a href="#">Notes</a></li><br>
+		<li class="sidebar"><a href="#">All Mail</a></li><br>
+		<li class="sidebar"><a href="#">Junk Mail</a></li><br>
+		<li class="sidebar"><a href="#">Trash</a></li><br>
+	</ul>
+</nav>
+<div class="emailHolder">
+		<div class="sender"></div>
+		<div class="subject"></div>
+		<div class="date"></div>
+		<div id="button"></div>
+		<div class="emailBody"></div>
+</div>
+
+</body>
 </html>
